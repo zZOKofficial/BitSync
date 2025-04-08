@@ -29,3 +29,17 @@ Work Distribution:
 Daily Routine:
 	•	Weekdays: 30-45 min theory + 45-60 min coding.
 	•	Weekends: 1-2 hrs coding + 1-2 hrs debugging/testing.
+
+
+
+Write a query to display the current date. Label the column Date.
+2. Display the employee number, name, salary, and salary increase by 15% expressed as a whole number. Label the column New Salary.
+3. Modify your previous query to add a column that will subtract the old salary from the new salary. Label the column Increase. Rerun your query.
+4. Display the employee’s name, hire date, and salary review date, which is the first Monday after six months of service. Label the column REVIEW. Format the dates to appear in the format
+similar to “Sunday, the Seventh of September, 1981.”
+5. For each employee display the employee name and calculate the number of months between today and the date the employee was hired. Label the column MONTHS_WORKED. Order your results by the number of months employed. Round the number of months up to the closest whole number.
+6. Write a query that produces the following for each employee: <employee name> earns <salary> monthly but wants <3 times salary>. Label the column Dream Salaries.
+7. Write a query that will display the employee’s name with the first letter capitalized and all other letters lowercase and the length of their name, for all employees whose name starts with J, A, or
+M. Give each column an appropriate label.
+8. Create a query that will display the employee name and commission amount. If the employee does not earn commission, put “No Commission.” Label the column COMM.
+9. Create a query that displays the employees’ names and indicates the amounts of their salaries through asterisks. Each asterisk signifies a hundred dollars. Sort the data in descending order of salary. Label the column EMPLOYEE_AND_THEIR_SALARIES.
