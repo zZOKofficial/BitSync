@@ -1,0 +1,106 @@
+CREATE TABLE student (
+    s_id NUMBER,
+    s_name VARCHAR2(20) NOT NULL,
+    phone NUMBER,
+    address VARCHAR2(50),
+    email VARCHAR2(30) UNIQUE,
+    credit_completed NUMBER(3),
+    course_completed NUMBER(2),
+    cgpa NUMBER,
+    deptno NUMBER(5),
+    gender VARCHAR2(6),
+    CONSTRAINT pk_student PRIMARY KEY (s_id),
+    CONSTRAINT fk_dept FOREIGN KEY (deptno) REFERENCES department(deptno),
+    CONSTRAINT chk_gender CHECK (gender IN ('M', 'F'))
+);
+
+
+Sure! Here’s a clear breakdown of how to answer questions 4 to 12 (based on your Oracle DBMS table from the previous lab):
+
+⸻
+
+4. Set s_id as primary key of the table:
+
+ALTER TABLE student
+ADD CONSTRAINT pk_student PRIMARY KEY (s_id);
+
+
+⸻
+
+5. Set constraint NOT NULL on the column s_name:
+
+ALTER TABLE student
+MODIFY s_name VARCHAR2(20) NOT NULL;
+
+(Note: You may have done this already during creation, but this is how to do it separately.)
+
+⸻
+
+6. Make email unique:
+
+ALTER TABLE student
+ADD CONSTRAINT unq_email UNIQUE (email);
+
+
+⸻
+
+7. Make deptno a foreign key (referencing department table):
+
+ALTER TABLE student
+ADD CONSTRAINT fk_dept FOREIGN KEY (deptno) REFERENCES department(deptno);
+
+
+⸻
+
+8. Add a constraint to gender so that it only allows values ‘M’ and ‘F’:
+
+ALTER TABLE student
+ADD CONSTRAINT chk_gender CHECK (gender IN ('M', 'F'));
+
+
+⸻
+
+9. Disable the constraint of s_id:
+
+ALTER TABLE student
+DISABLE CONSTRAINT pk_student;
+
+
+⸻
+
+10. Drop the constraint from gender:
+
+ALTER TABLE student
+DROP CONSTRAINT chk_gender;
+
+
+⸻
+
+11. View the columns associated with constraints:
+
+SELECT 
+    cols.constraint_name,
+    cols.column_name,
+    cons.constraint_type,
+    cons.status
+FROM 
+    user_constraints cons
+JOIN 
+    user_cons_columns cols 
+ON 
+    cons.constraint_name = cols.constraint_name
+WHERE 
+    cols.table_name = 'STUDENT';
+
+
+⸻
+
+12. Enable the constraint of s_id:
+
+ALTER TABLE student
+ENABLE CONSTRAINT pk_student;
+
+
+⸻
+
+Let me know if you want all steps as one script or a diagram-style output for submission.
