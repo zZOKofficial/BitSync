@@ -1,51 +1,23 @@
-
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-// Person class
-class Person {
-public:
-    string name;
-    int age;
-
-    Person() {
-        name = "";
-        age = 0;
-    }
-
-    Person(string name, int age) {
-        this->name = name;
-        this->age = age;
-    }
-
-    void print() const {
-        cout << "[" << name << ", " << age << "]";
-    }
-
-    bool equals(const Person& other) const {
-        return name == other.name && age == other.age;
-    }
-};
-
-// Node class storing Person object
 class Node {
 public:
-    Person data;
+    int data;
     Node* next;
 
     Node() {
+        data = 0;
         next = nullptr;
     }
 
-    Node(Person data) {
+    Node(int data) {
         this->data = data;
         this->next = nullptr;
     }
 
-
 };
 
-// Singly Linked List class for Person objects
 class LinkedList {
     Node* head;
 
@@ -54,13 +26,13 @@ public:
         head = nullptr;
     }
 
-    void insertAtBeginning(Person data) {
+    void insertAtBeginning(int data) {
         Node* newNode = new Node(data);
         newNode->next = head;
         head = newNode;
     }
 
-    void insertAtEnd(Person data) {
+    void insertAtEnd(int data) {
         Node* newNode = new Node(data);
         if (head == nullptr) {
             head = newNode;
@@ -72,16 +44,14 @@ public:
         temp->next = newNode;
     }
 
-    void insertAfter(Person data, Person afterPerson) {
+    void insertAfter(int data, int positionValue) {
         Node* temp = head;
-        while (temp != nullptr && !temp->data.equals(afterPerson))
+        while (temp != nullptr && temp->data != positionValue)
             temp = temp->next;
-
         if (temp == nullptr) {
-            cout << "Person not found.\n";
+            cout << "Node with value " << positionValue << " not found." << endl;
             return;
         }
-
         Node* newNode = new Node(data);
         newNode->next = temp->next;
         temp->next = newNode;
@@ -89,7 +59,7 @@ public:
 
     void deleteFromBeginning() {
         if (head == nullptr) {
-            cout << "List is empty!\n";
+            cout << "List is empty!" << endl;
             return;
         }
         Node* temp = head;
@@ -99,7 +69,7 @@ public:
 
     void deleteFromEnd() {
         if (head == nullptr) {
-            cout << "List is empty!\n";
+            cout << "List is empty!" << endl;
             return;
         }
         if (head->next == nullptr) {
@@ -114,13 +84,13 @@ public:
         temp->next = nullptr;
     }
 
-    void deleteFrom(Person personToDelete) {
+    void deleteFrom(int positionValue) {
         if (head == nullptr) {
-            cout << "List is empty!\n";
+            cout << "List is empty!" << endl;
             return;
         }
 
-        if (head->data.equals(personToDelete)) {
+        if (head->data == positionValue) {
             Node* temp = head;
             head = head->next;
             delete temp;
@@ -128,11 +98,11 @@ public:
         }
 
         Node* temp = head;
-        while (temp->next != nullptr && !temp->next->data.equals(personToDelete))
+        while (temp->next != nullptr && temp->next->data != positionValue)
             temp = temp->next;
 
         if (temp->next == nullptr) {
-            cout << "Person not found.\n";
+            cout << "Node with value " << positionValue << " not found." << endl;
             return;
         }
 
@@ -144,43 +114,31 @@ public:
     void printList() {
         Node* temp = head;
         while (temp != nullptr) {
-            temp->data.print();
-            cout << " ---> ";
+            cout << temp->data << " ---> ";
             temp = temp->next;
         }
-        cout << "NULL\n";
+        cout << "NULL" << endl;
     }
 };
 
-// Main function to demonstrate object-based linked list
 int main() {
     LinkedList list;
-
-    Person p1("Alice", 25);
-    Person p2("Bob", 30);
-    Person p3("Charlie", 35);
-    Person p4("Diana", 40);
-    Person p5("Eve", 28);
-    Person p6("Frank", 45);
-
-    list.insertAtBeginning(p1);
-    list.insertAtBeginning(p2);
-    list.insertAtBeginning(p3);
+    list.insertAtBeginning(10);
+    list.insertAtBeginning(20);
+    list.insertAtBeginning(30);
 
     cout << "Initial List:\n";
     list.printList();
 
-    list.insertAtEnd(p4);
-    list.insertAfter(p5, p1); // Insert Eve after Alice
-
-    cout << "\nAfter Insertions:\n";
+    list.insertAtEnd(5);
+    list.insertAfter(15, 10); // insert 15 after 10
+    cout << "\nAfter insertions:\n";
     list.printList();
 
     list.deleteFromBeginning();
     list.deleteFromEnd();
-    list.deleteFrom(p1); // Delete Alice
-
-    cout << "\nAfter Deletions:\n";
+    //list.deleteFrom(10);
+    //cout << "\nAfter deletions:\n";
     list.printList();
 
     return 0;
