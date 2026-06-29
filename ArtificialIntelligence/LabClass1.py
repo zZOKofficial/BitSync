@@ -29,6 +29,10 @@ print("pop")
 print(List)
 
 #Touple
+T = (10, 20, 30, 11, 11, 17)
+#Can not change anything in touple.
+print(T)
+print(type(T))
 
 #Set: 
 S = {87, 23, 23, 23, 2, 7, 9} 
