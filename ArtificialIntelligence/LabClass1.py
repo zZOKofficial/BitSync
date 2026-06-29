@@ -45,8 +45,31 @@ S.remove(9)
 L = list(S) 
 
 #Dict:
+#D = {'key' : 'value'}
+players = {
+	'Messi' : 10,
+    'Neymar' : 11,
+    'Ronaldo' : 7
+}
+print(players['Messi'])
+print(players.get('Neymar'))
+players.update({'Paolo Maldini': 2})
+players.popitem()
+print(players)
+players.popitem(Ronaldo)
 
 #Sorting
 print("SORTING")
 List.sort(reverse= "true")
 print(list)
+
+#Graph
+graph = {
+	'A' : ['B', 'C'],
+    'B' : ['D', 'E'],
+    'C' : 'F',
+    'D' : [],
+    'E' : [],
+    'F' : []
+}
+print(graph.values())
