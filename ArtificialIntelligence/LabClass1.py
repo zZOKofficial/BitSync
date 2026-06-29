@@ -27,9 +27,18 @@ print(List)
 List.pop(0)
 print("pop")
 print(List)
+
 #Touple
 
 #Set: 
+S = {87, 23, 23, 23, 2, 7, 9} 
+print(S)
+#Does not allow duplicate value, and does not follow any index. 
+#No sort, No nothing. Can not modify by indexes. Adding and removing is possible.
+S.add(100)
+S.remove(9)
+#Converting set to list.
+L = list(S) 
 
 #Dict:
 
